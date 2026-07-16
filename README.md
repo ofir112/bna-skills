@@ -1,0 +1,50 @@
+# BNA Skills — סקילים ל-Claude Code בעברית
+
+חבילת סקילים ל-[Claude Code](https://claude.com/claude-code) מבית *BNA AI (אופיר אשר)*.
+מטרה: לתת לקהל הישראלי כלים מוכנים שמרחיבים את היכולות של Claude Code, בעברית ומהבסיס.
+
+## הסקילים בחבילה
+
+| סקיל | מה הוא עושה |
+|------|------------|
+| `bna-seo` | קידום אתרים בגוגל (SEO) עם תמיכה מלאה בעברית, RTL ושוק ישראלי — מטא תגיות, structured data, sitemap, hreflang ועוד. |
+
+## התקנה מהירה
+
+הדביקו את השורה הבאה בתוך Claude Code והוא יתקין את הסקיל אוטומטית:
+
+```bash
+curl -sL https://github.com/ofir112/bna-skills/archive/main.tar.gz | tar -xz -C /tmp && cp -r /tmp/bna-skills-main/skills/bna-seo ~/.claude/skills/ && rm -rf /tmp/bna-skills-main
+```
+
+זהו. עכשיו כשתבקשו מ-Claude "תשפר לי את ה-SEO של הדף" או "תקן לי את המטא תגיות" — הסקיל ייכנס לפעולה לבד.
+
+### התקנת כל הסקילים בבת אחת
+
+```bash
+curl -sL https://github.com/ofir112/bna-skills/archive/main.tar.gz | tar -xz -C /tmp && cp -r /tmp/bna-skills-main/skills/* ~/.claude/skills/ && rm -rf /tmp/bna-skills-main
+```
+
+## איך יודעים שזה עבד
+
+הריצו בתוך Claude Code:
+
+```bash
+ls ~/.claude/skills/
+```
+
+אתם אמורים לראות תיקייה בשם `bna-seo`. אפשר גם פשוט לבקש מ-Claude: "אילו סקילים מותקנים אצלי?"
+
+## הסרה
+
+```bash
+rm -rf ~/.claude/skills/bna-seo
+```
+
+## רישיון
+
+MIT. חלק מהידע ב-`bna-seo` מבוסס על סקילי web-quality פתוחים (MIT), ונכתב מחדש והורחב על ידי BNA AI עם שכבת עברית/RTL וידע מהשוק הישראלי. פרטים ב-[LICENSE](LICENSE).
+
+---
+
+עוד על BNA AI: [Instagram](https://www.instagram.com/ofir.ai/) · [Facebook](https://www.facebook.com/OfirAi)
