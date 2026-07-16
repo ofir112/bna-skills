@@ -8,6 +8,7 @@
 | סקיל | מה הוא עושה |
 |------|------------|
 | `bna-seo` | קידום אתרים בגוגל (SEO) עם תמיכה מלאה בעברית, RTL ושוק ישראלי — מטא תגיות, structured data, sitemap, hreflang ועוד. |
+| `bna-performance` | זירוז אתרים ושיפור מהירות טעינה, עם סעיף ייעודי לפונטים בעברית — Core Web Vitals, תמונות, JavaScript, caching ועוד. |
 
 ## התקנה מהירה
 
@@ -18,6 +19,14 @@ curl -sL https://github.com/ofir112/bna-skills/archive/main.tar.gz | tar -xz -C 
 ```
 
 זהו. עכשיו כשתבקשו מ-Claude "תשפר לי את ה-SEO של הדף" או "תקן לי את המטא תגיות" — הסקיל ייכנס לפעולה לבד.
+
+### התקנת סקיל הביצועים (`bna-performance`)
+
+```bash
+curl -sL https://github.com/ofir112/bna-skills/archive/main.tar.gz | tar -xz -C /tmp && cp -r /tmp/bna-skills-main/skills/bna-performance ~/.claude/skills/ && rm -rf /tmp/bna-skills-main
+```
+
+עכשיו כשתבקשו "האתר איטי, תזרז אותו" או "תשפר מהירות טעינה" — הסקיל ייכנס לפעולה.
 
 ### התקנת כל הסקילים בבת אחת
 
