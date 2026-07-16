@@ -4,9 +4,8 @@ description: Optimize websites for search engine visibility and ranking, with fi
 license: MIT
 metadata:
   author: BNA AI (Ofir Asher)
-  homepage: https://www.instagram.com/ofir.ai/
   version: "2.0"
-  based-on: web-quality-skills (MIT) — rewritten and extended by BNA AI with Hebrew/RTL SEO, Israeli-market guidance, and a workflow-first structure.
+  based-on: web-quality-skills (MIT) — rewritten and extended with Hebrew/RTL SEO, Israeli-market guidance, and a workflow-first structure.
 ---
 
 # BNA SEO — קידום אתרים בגוגל (כולל עברית ו-RTL)
@@ -100,7 +99,7 @@ Sitemap: https://your-domain.co.il/sitemap.xml
 <title>דף הבית</title>
 
 <!-- ✅ תיאורי עם מילת המפתח בהתחלה + מותג בסוף -->
-<title>קורס Claude Code בעברית | לומדים לבנות עם AI | BNA AI</title>
+<title>נעלי ריצה לנשים | משלוח חינם | שם החנות</title>
 ```
 
 הנחיות: 50-60 תווים, מילת מפתח ראשית קרוב להתחלה, ייחודי לכל דף, שם המותג בסוף.
@@ -110,7 +109,7 @@ Sitemap: https://your-domain.co.il/sitemap.xml
 
 ```html
 <!-- ✅ משכנע, ייחודי, עם קריאה לפעולה -->
-<meta name="description" content="לומדים לבנות אתרים ומערכות עם Claude Code, בעברית ומהבסיס. בלי רקע טכני. סדנאות חיות, קהילה תומכת ותרגול אמיתי. הצטרפו עכשיו.">
+<meta name="description" content="נעלי ריצה לנשים במבחר צבעים ומידות. משלוח חינם עד הבית, 30 יום להחזרה. אלפי לקוחות מרוצים. הזמינו עכשיו וקבלו 20% הנחה.">
 ```
 
 הנחיות: 150-160 תווים, מילת מפתח בטבעיות, קריאה לפעולה, ייחודי לכל דף.
@@ -119,12 +118,12 @@ Sitemap: https://your-domain.co.il/sitemap.xml
 
 ```html
 <!-- ✅ היררכיה נכונה -->
-<h1>קורס Claude Code בעברית</h1>
-  <h2>מה תלמדו בקורס</h2>
-    <h3>בניית דף נחיתה</h3>
-    <h3>חיבור לגיטהאב ולוורדפרס</h3>
-  <h2>למי הקורס מתאים</h2>
-  <h2>המלצות בוגרים</h2>
+<h1>נעלי ריצה לנשים</h1>
+  <h2>מאפייני המוצר</h2>
+    <h3>נוחות ובלימת זעזועים</h3>
+    <h3>חומרים נושמים</h3>
+  <h2>מדריך מידות</h2>
+  <h2>ביקורות לקוחות</h2>
 ```
 
 הנחיות: `<h1>` *אחד בלבד* בעמוד, בלי לדלג רמות, כותרות תיאוריות עם מילות מפתח.
@@ -133,8 +132,8 @@ Sitemap: https://your-domain.co.il/sitemap.xml
 
 ```html
 <!-- ✅ תמונה מותאמת -->
-<img src="kurs-claude-code-ivrit.webp"
-     alt="מסך של Claude Code בונה דף נחיתה בעברית בזמן אמת"
+<img src="naaley-ritza-nashim-kachol.webp"
+     alt="נעל ריצה לנשים בצבע כחול, מבט צד"
      width="800" height="600" loading="lazy">
 ```
 
@@ -144,10 +143,10 @@ Sitemap: https://your-domain.co.il/sitemap.xml
 
 ```html
 <!-- ❌ לא תיאורי -->
-<a href="/courses">לחצו כאן</a>
+<a href="/products">לחצו כאן</a>
 
 <!-- ✅ עוגן תיאורי עם מילות מפתח -->
-<a href="/courses/claude-code">הקורס המלא ל-Claude Code בעברית</a>
+<a href="/products/naaley-ritza">קולקציית נעלי הריצה לנשים</a>
 ```
 
 ---
@@ -180,10 +179,10 @@ Sitemap: https://your-domain.co.il/sitemap.xml
 
 ```
 ✅ תעתיק לטיני (הכי בטוח, קריא בכל מקום):
-https://your-domain.co.il/kurs-claude-code
+https://your-domain.co.il/naaley-ritza-nashim
 
 ✅ עברית מקודדת (עובד, אבל מתקבל מכוער כשמעתיקים):
-https://your-domain.co.il/קורס-claude-code
+https://your-domain.co.il/נעלי-ריצה-לנשים
 
 ❌ פרמטרים בלי משמעות:
 https://your-domain.co.il/p?id=12345
@@ -201,7 +200,7 @@ https://your-domain.co.il/p?id=12345
 
 ```html
 <!-- לעטוף קטע אנגלי בתוך משפט עברי כדי שהכיוון לא יישבר -->
-<p>הקורס מלמד <bdi>Claude Code</bdi> מהבסיס.</p>
+<p>הדגם החדש תומך ב-<bdi>Bluetooth 5.0</bdi> ובטעינה מהירה.</p>
 ```
 
 ---
@@ -235,34 +234,44 @@ body { font-size: 16px; line-height: 1.6; }
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "BNA AI",
+  "name": "שם העסק",
   "url": "https://your-domain.co.il",
   "logo": "https://your-domain.co.il/logo.png",
   "sameAs": [
-    "https://www.instagram.com/ofir.ai/",
-    "https://www.facebook.com/OfirAi"
+    "https://www.instagram.com/your-business/",
+    "https://www.facebook.com/your-business"
   ]
 }
 </script>
 ```
 
-### Product / Course (קורס דיגיטלי)
+### Product (מוצר בחנות)
 
 ```html
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Course",
-  "name": "קורס Claude Code בעברית",
-  "description": "לומדים לבנות אתרים ומערכות עם AI, מהבסיס ובעברית.",
-  "provider": {
-    "@type": "Organization",
-    "name": "BNA AI",
-    "sameAs": "https://your-domain.co.il"
+  "@type": "Product",
+  "name": "נעלי ריצה לנשים",
+  "description": "נעלי ריצה קלות עם בלימת זעזועים, במבחר צבעים ומידות.",
+  "brand": { "@type": "Brand", "name": "שם המותג" },
+  "offers": {
+    "@type": "Offer",
+    "price": "349.00",
+    "priceCurrency": "ILS",
+    "availability": "https://schema.org/InStock",
+    "url": "https://your-domain.co.il/products/naaley-ritza"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "1250"
   }
 }
 </script>
 ```
+
+> אם האתר הוא קורס/הדרכה ולא חנות, החליפו את `"@type": "Product"` ב-`"@type": "Course"` והשתמשו ב-`provider` במקום `offers`/`brand`.
 
 ### FAQ
 
@@ -274,10 +283,10 @@ body { font-size: 16px; line-height: 1.6; }
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "צריך רקע טכני כדי ללמוד?",
+      "name": "כמה זמן לוקח המשלוח?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "לא. הקורס בנוי מהבסיס ומיועד גם למי שאין לו רקע בתכנות."
+        "text": "משלוח חינם עד הבית תוך 3-5 ימי עסקים, עם אפשרות לאיסוף עצמי."
       }
     }
   ]
@@ -294,8 +303,8 @@ body { font-size: 16px; line-height: 1.6; }
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://your-domain.co.il" },
-    { "@type": "ListItem", "position": 2, "name": "קורסים", "item": "https://your-domain.co.il/courses" },
-    { "@type": "ListItem", "position": 3, "name": "Claude Code", "item": "https://your-domain.co.il/courses/claude-code" }
+    { "@type": "ListItem", "position": 2, "name": "מוצרים", "item": "https://your-domain.co.il/products" },
+    { "@type": "ListItem", "position": 3, "name": "נעלי ריצה לנשים", "item": "https://your-domain.co.il/products/naaley-ritza" }
   ]
 }
 </script>
@@ -372,4 +381,4 @@ body { font-size: 16px; line-height: 1.6; }
 
 ---
 
-*הסקיל הזה נבנה על ידי BNA AI (אופיר אשר) להנגשת AI לקהל הישראלי. מבוסס על ידע SEO פתוח ברישיון MIT, נכתב מחדש והורחב עם שכבת עברית/RTL וידע מהשוק המקומי.*
+*סקיל מאת BNA AI (אופיר אשר). מבוסס על ידע SEO פתוח ברישיון MIT, נכתב מחדש והורחב עם שכבת עברית/RTL וידע מהשוק הישראלי.*
