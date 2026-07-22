@@ -1,0 +1,32 @@
+{
+  "name": "bna",
+  "owner": {
+    "name": "Ofir Asher",
+    "url": "https://bna.ai"
+  },
+  "metadata": {
+    "description": "סקילים של BNA AI לקידום אתרים בגוגל ואופטימיזציית מהירות, מותאמים לעברית ו-RTL",
+    "version": "1.0.0",
+    "repository": "https://github.com/ofir112/bna-skills"
+  },
+  "plugins": [
+    {
+      "name": "bna-seo",
+      "description": "קידום אתרים בגוגל בעברית: מטא תגיות, כותרות, קישורים פנימיים, sitemap ו-structured data מותאמים ל-RTL",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-seo"
+      ]
+    },
+    {
+      "name": "bna-performance",
+      "description": "אופטימיזציית מהירות טעינה לאתרים: טיפול בפונטים בעברית, תמונות כבדות, סקריפטים חוסמים ו-caching חכם",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-performance"
+      ]
+    }
+  ]
+}
