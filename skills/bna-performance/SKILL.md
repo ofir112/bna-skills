@@ -5,7 +5,6 @@ license: MIT
 metadata:
   author: BNA AI (Ofir Asher)
   version: "2.0"
-  based-on: web-quality-skills (MIT) — rewritten and extended with Hebrew-font performance, Israeli-market guidance, and a workflow-first structure.
 ---
 
 # BNA Performance — לזרז אתרים (כולל פונטים בעברית)
