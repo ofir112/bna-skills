@@ -5,7 +5,6 @@ license: MIT
 metadata:
   author: BNA AI (Ofir Asher)
   version: "1.0"
-  based-on: Inspired by the open-source skills-il/tax-and-finance project (MIT). Written from scratch with a verification-first workflow, a freelancer-focused intake flow, and CPA-meeting preparation guidance.
 ---
 
 # BNA Tax — להבין את הדוח השנתי (מיסוי ישראלי)

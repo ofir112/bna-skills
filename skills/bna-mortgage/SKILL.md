@@ -5,7 +5,6 @@ license: MIT
 metadata:
   author: BNA AI (Ofir Asher)
   version: "1.0"
-  based-on: Inspired by the open-source skills-il/tax-and-finance project (MIT). Written from scratch around two principles the original lacks - live-data verification instead of hardcoded rates, and code-based calculations instead of mental arithmetic - plus a negotiation playbook.
 ---
 
 # BNA משכנתא — להשוות, להבין ולנהל משא ומתן

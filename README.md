@@ -39,8 +39,6 @@ claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-ta
 עכשיו כשתשאלו על "דוח שנתי", "נקודות זיכוי" או "החזר מס" — הסקיל ייכנס לפעולה.
 שימו לב: הסקיל עוזר להבין ולהתכונן. הוא לא מגיש דוחות ולא מחליף רואה חשבון.
 
-*קרדיט:* הסקיל נכתב מאפס בהשראת פרויקט הקוד הפתוח [skills-il](https://github.com/skills-il/tax-and-finance) (רישיון MIT).
-
 ### התקנת סקיל המשכנתאות (`bna-mortgage`)
 
 ```bash
@@ -49,8 +47,6 @@ claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-mo
 
 עכשיו כשתשאלו על "תמהיל משכנתא", "השוואת משכנתאות" או "מסלול פריים" — הסקיל ייכנס לפעולה.
 שימו לב: הסקיל עוזר להשוות ולהבין. הוא לא ממליץ "קחו את ההצעה הזאת" ולא מחליף יועץ משכנתאות.
-
-*קרדיט:* גם הסקיל הזה נכתב מאפס בהשראת [skills-il](https://github.com/skills-il/tax-and-finance) (רישיון MIT).
 
 ### התקנת כל הסקילים בבת אחת
 
