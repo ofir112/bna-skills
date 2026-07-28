@@ -5,7 +5,7 @@
     "url": "https://bna.ai"
   },
   "metadata": {
-    "description": "סקילים של BNA AI בעברית: קידום אתרים בגוגל, אופטימיזציית מהירות והבנת מיסוי ישראלי",
+    "description": "סקילים של BNA AI בעברית: קידום אתרים, מהירות, מיסוי ישראלי והשוואת משכנתאות",
     "version": "1.0.0",
     "repository": "https://github.com/ofir112/bna-skills"
   },
@@ -35,6 +35,15 @@
       "strict": false,
       "skills": [
         "./skills/bna-tax"
+      ]
+    },
+    {
+      "name": "bna-mortgage",
+      "description": "השוואת משכנתאות בישראל: מסלולים, מגבלות בנק ישראל, השוואת הצעות עם חישובים בקוד, תרחישי קיצון ופלייבוק משא ומתן מול הבנקים",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-mortgage"
       ]
     }
   ]
