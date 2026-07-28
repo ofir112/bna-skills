@@ -17,6 +17,12 @@
 | `bna-market-research` | מחקר שוק מעסקאות אמת: שליפת מחירים שנסגרו בפועל מהמאגר הממשלתי והשוואה הוגנת מול המחיר המבוקש. |
 | `bna-rent` | שכירות חכמה: ניתוח חוזה עם רמזור סעיפים ונוסח חלופי, פרוטוקול כניסה, מכתבים לבעל הבית והחזרת פיקדון. |
 | `bna-listing-pro` | שיווק נכסים לאנשי נדל"ן: תיאורים ומודעות לכל פלטפורמה, הנחיות צילום, מותג אישי ותסריטי מעקב - אמת בפרסום בלבד. |
+| `bna-payslip` | פענוח תלוש שכר: כל שורה בעברית פשוטה, צ'ק-ליסט "האם מפרישים לי נכון", דגלים אדומים, ברוטו-נטו בקוד והשוואת הצעות עבודה. |
+| `bna-pension` | הדוח השנתי של הפנסיה בעברית של בני אדם, ומחשבון בקוד שמראה כמה דמי הניהול עולים לאורך 30 שנה - בשקלים. |
+| `bna-vat` | עוסק פטור או מורשה? השוואה בקוד על המספרים שלך, שלושת המסמכים, דיווחים, קיזוז תשומות וחשבוניות ישראל. |
+| `bna-bituach-leumi` | ביטוח לאומי לעצמאים: למה מקדמות נמוכות שוחקות דמי לידה ומילואים, מה מכוסה ומה לא, פנסיה חובה וטיפול בחובות. |
+| `bna-car` | קניית רכב בלי ליפול: בדיקות חובה ליד שנייה, מזומן מול מימון מול ליסינג בקוד, ריבית אפקטיבית אמיתית ודגלים אדומים. |
+| `bna-miluim` | זכויות מילואים בבדיקה חיה מול המקורות הרשמיים: תגמולים, מענקים, הגנות בעבודה, סטודנטים והגשת תביעות. |
 
 ## התקנה מהירה
 
@@ -68,6 +74,19 @@ claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-li
 ```
 
 כל סקילי הנדל"ן עוזרים להבין, לחשב ולהתכונן - הם לא מחליפים עורך דין מקרקעין, שמאי, יועץ מס או יועץ השקעות.
+
+### התקנת סקילי הכסף האישי והזכויות
+
+```bash
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-payslip@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-pension@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-vat@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-bituach-leumi@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-car@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-miluim@bna
+```
+
+גם כאן: הסקילים עוזרים להבין, לחשב ולהתכונן - הם לא ייעוץ משפטי, פנסיוני, ביטוחי או מס, ולא קובעים זכאות. בכל החלטה מהותית, איש מקצוע מוסמך הוא הכתובת.
 
 ### התקנת כל הסקילים בבת אחת
 

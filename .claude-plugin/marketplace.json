@@ -5,7 +5,7 @@
     "url": "https://bna.ai"
   },
   "metadata": {
-    "description": "סקילים של BNA AI בעברית: אתרים ושיווק, כספים ומיסים, ונדל\"ן ישראלי",
+    "description": "סקילים של BNA AI בעברית: אתרים ושיווק, כספים ומיסים, נדל\"ן, וכסף אישי וזכויות בישראל",
     "version": "1.0.0",
     "repository": "https://github.com/ofir112/bna-skills"
   },
@@ -98,6 +98,60 @@
       "strict": false,
       "skills": [
         "./skills/bna-listing-pro"
+      ]
+    },
+    {
+      "name": "bna-payslip",
+      "description": "פענוח תלוש שכר ישראלי: רכיבים, ניכויים, נקודות זיכוי, צ'ק-ליסט הפרשות, דגלים אדומים, ברוטו-נטו בקוד והשוואת הצעות עבודה",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-payslip"
+      ]
+    },
+    {
+      "name": "bna-pension",
+      "description": "הבנת החיסכון הפנסיוני: פענוח הדוח השנתי, מחשבון דמי ניהול לאורך שנים בקוד, קרנות ברירת מחדל, קרן השתלמות ואיתור כספים אבודים",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-pension"
+      ]
+    },
+    {
+      "name": "bna-vat",
+      "description": "מע\"מ ועוסקים: פטור מול מורשה עם השוואה בקוד, שלושת המסמכים, דיווחים, קיזוז תשומות וחשבוניות ישראל",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-vat"
+      ]
+    },
+    {
+      "name": "bna-bituach-leumi",
+      "description": "ביטוח לאומי לעצמאים: הגדרת עצמאי, מקדמות שמגינות על קצבאות, מה מכוסה ומה לא, פנסיה חובה וטיפול בחובות",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-bituach-leumi"
+      ]
+    },
+    {
+      "name": "bna-car",
+      "description": "קניית רכב חכמה: בדיקות חובה ליד שנייה, השוואת מזומן/מימון/ליסינג בקוד עם ריבית אפקטיבית אמיתית, ביטוח ודגלים אדומים",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-car"
+      ]
+    },
+    {
+      "name": "bna-miluim",
+      "description": "זכויות מילואים: תגמולים, מענקים והטבות בבדיקה חיה מול מקורות רשמיים, הגנות בעבודה, סטודנטים והגשת תביעות",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-miluim"
       ]
     }
   ]
