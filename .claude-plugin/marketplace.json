@@ -5,7 +5,7 @@
     "url": "https://bna.ai"
   },
   "metadata": {
-    "description": "סקילים של BNA AI בעברית: קידום אתרים, מהירות, מיסוי ישראלי והשוואת משכנתאות",
+    "description": "סקילים של BNA AI בעברית: אתרים ושיווק, כספים ומיסים, ונדל\"ן ישראלי",
     "version": "1.0.0",
     "repository": "https://github.com/ofir112/bna-skills"
   },
@@ -44,6 +44,60 @@
       "strict": false,
       "skills": [
         "./skills/bna-mortgage"
+      ]
+    },
+    {
+      "name": "bna-property-check",
+      "description": "בדיקות לפני קניית דירה: פענוח נסח טאבו, דגלים אדומים, חריגות בנייה, בית משותף וצ'ק-ליסט שאלות למוכר ולעורך הדין",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-property-check"
+      ]
+    },
+    {
+      "name": "bna-realestate-tax",
+      "description": "מיסוי נדל\"ן ישראלי: מס רכישה, מס שבח ושלושת מסלולי המס על שכירות, עם אימות מול רשות המסים וחישובים בקוד",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-realestate-tax"
+      ]
+    },
+    {
+      "name": "bna-deal-analyzer",
+      "description": "ניתוח עסקאות נדל\"ן להשקעה: עלות אמיתית, תשואה נטו, תזרים מול משכנתא, תרחישי קיצון והשוואת עסקאות - הכל בקוד",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-deal-analyzer"
+      ]
+    },
+    {
+      "name": "bna-market-research",
+      "description": "מחקר שוק נדל\"ן מעסקאות אמת במאגר הממשלתי: השוואת מחיר מבוקש למחירים שנסגרו בפועל וטווח מחיר הוגן",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-market-research"
+      ]
+    },
+    {
+      "name": "bna-rent",
+      "description": "שכירות חכמה: ניתוח חוזה עם רמזור סעיפים, זכויות שוכרים, פרוטוקול כניסה, מכתבים לבעל הבית והחזרת פיקדון",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-rent"
+      ]
+    },
+    {
+      "name": "bna-listing-pro",
+      "description": "שיווק נכסים לאנשי נדל\"ן: תיאורים שמוכרים, מודעות לכל פלטפורמה, הנחיות צילום, מותג אישי ומעקב מתעניינים - באמת בפרסום בלבד",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-listing-pro"
       ]
     }
   ]

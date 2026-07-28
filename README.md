@@ -11,6 +11,12 @@
 | `bna-performance` | זירוז אתרים ושיפור מהירות טעינה, עם סעיף ייעודי לפונטים בעברית — Core Web Vitals, תמונות, JavaScript, caching ועוד. |
 | `bna-tax` | הבנת דוחות מס ישראליים: דוח שנתי, נקודות זיכוי, הוצאות מוכרות, מקדמות והכנה לפגישה עם רואה החשבון. בנוי על עקרון "אימות לפני כל מספר" מול מקורות רשמיים. |
 | `bna-mortgage` | השוואת משכנתאות בישראל: הסבר המסלולים בשפה פשוטה, השוואת הצעות בנקים עם חישובים בקוד (לא בראש), תרחישי קיצון, ופלייבוק משא ומתן מול הבנקים. |
+| `bna-property-check` | בדיקות לפני קניית דירה: פענוח נסח טאבו סעיף-סעיף, דגלים אדומים, חריגות בנייה, בית משותף, בדק בית וצ'ק-ליסט שאלות לכל הגורמים. |
+| `bna-realestate-tax` | מיסוי נדל"ן: מס רכישה, מס שבח ושלושת מסלולי המס על הכנסות משכירות - הבחירה שרוב המשכירים לא יודעים שיש להם. |
+| `bna-deal-analyzer` | ניתוח עסקת השקעה במספרים: עלות אמיתית, תשואה נטו, תזרים מול משכנתא, תרחישי קיצון ו-ROE - כל החישובים בקוד. |
+| `bna-market-research` | מחקר שוק מעסקאות אמת: שליפת מחירים שנסגרו בפועל מהמאגר הממשלתי והשוואה הוגנת מול המחיר המבוקש. |
+| `bna-rent` | שכירות חכמה: ניתוח חוזה עם רמזור סעיפים ונוסח חלופי, פרוטוקול כניסה, מכתבים לבעל הבית והחזרת פיקדון. |
+| `bna-listing-pro` | שיווק נכסים לאנשי נדל"ן: תיאורים ומודעות לכל פלטפורמה, הנחיות צילום, מותג אישי ותסריטי מעקב - אמת בפרסום בלבד. |
 
 ## התקנה מהירה
 
@@ -47,6 +53,21 @@ claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-mo
 
 עכשיו כשתשאלו על "תמהיל משכנתא", "השוואת משכנתאות" או "מסלול פריים" — הסקיל ייכנס לפעולה.
 שימו לב: הסקיל עוזר להשוות ולהבין. הוא לא ממליץ "קחו את ההצעה הזאת" ולא מחליף יועץ משכנתאות.
+
+### התקנת סקילי הנדל"ן
+
+כל אחד מהסקילים מותקן באותה צורה - מדביקים בתוך Claude Code:
+
+```bash
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-property-check@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-realestate-tax@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-deal-analyzer@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-market-research@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-rent@bna
+claude plugin marketplace add ofir112/bna-skills && claude plugin install bna-listing-pro@bna
+```
+
+כל סקילי הנדל"ן עוזרים להבין, לחשב ולהתכונן - הם לא מחליפים עורך דין מקרקעין, שמאי, יועץ מס או יועץ השקעות.
 
 ### התקנת כל הסקילים בבת אחת
 
