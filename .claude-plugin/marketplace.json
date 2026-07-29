@@ -171,6 +171,15 @@
       "skills": [
         "./skills/bna-stock-report"
       ]
+    },
+    {
+      "name": "bna-market-pulse",
+      "description": "מסך שוק גלובלי חי: תל אביב, וול סטריט, אירופה ואסיה, מט\"ח (כולל שער יציג רשמי מבנק ישראל), זהב ונפט - עם השוואת מדדים מותאמת מטבע וסקירה כתובה לשיתוף",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-market-pulse"
+      ]
     }
   ]
 }
