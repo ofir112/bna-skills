@@ -153,6 +153,24 @@
       "skills": [
         "./skills/bna-miluim"
       ]
+    },
+    {
+      "name": "bna-fund-compare",
+      "description": "השוואת קרנות השתלמות, גמל ופנסיה מהדאטה הרשמית של משרד האוצר (גמל-נט/פנסיה-נט): דמי ניהול, תשואות 5 שנים ושארפ, עם סקריפט מובנה",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-fund-compare"
+      ]
+    },
+    {
+      "name": "bna-stock-report",
+      "description": "דוסייה עובדתי על מניה אמריקאית או תל-אביבית מהדוחות הרשמיים (SEC EDGAR) ונתוני שוק חיים, עם סקריפט מובנה. עובדות בלבד, בלי המלצות",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/bna-stock-report"
+      ]
     }
   ]
 }
