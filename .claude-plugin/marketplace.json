@@ -13,172 +13,172 @@
     {
       "name": "bna-seo",
       "description": "קידום אתרים בגוגל בעברית: מטא תגיות, כותרות, קישורים פנימיים, sitemap ו-structured data מותאמים ל-RTL",
-      "source": "./",
+      "source": "./skills/bna-seo",
       "strict": false,
       "skills": [
-        "./skills/bna-seo"
+        "./"
       ]
     },
     {
       "name": "bna-performance",
       "description": "אופטימיזציית מהירות טעינה לאתרים: טיפול בפונטים בעברית, תמונות כבדות, סקריפטים חוסמים ו-caching חכם",
-      "source": "./",
+      "source": "./skills/bna-performance",
       "strict": false,
       "skills": [
-        "./skills/bna-performance"
+        "./"
       ]
     },
     {
       "name": "bna-tax",
       "description": "הבנת דוחות מס ישראליים: דוח שנתי, נקודות זיכוי, הוצאות מוכרות, מקדמות והכנה לפגישה עם רואה החשבון. עם אימות נתונים מול מקורות רשמיים",
-      "source": "./",
+      "source": "./skills/bna-tax",
       "strict": false,
       "skills": [
-        "./skills/bna-tax"
+        "./"
       ]
     },
     {
       "name": "bna-mortgage",
       "description": "השוואת משכנתאות בישראל: מסלולים, מגבלות בנק ישראל, השוואת הצעות עם חישובים בקוד, תרחישי קיצון ופלייבוק משא ומתן מול הבנקים",
-      "source": "./",
+      "source": "./skills/bna-mortgage",
       "strict": false,
       "skills": [
-        "./skills/bna-mortgage"
+        "./"
       ]
     },
     {
       "name": "bna-property-check",
       "description": "בדיקות לפני קניית דירה: פענוח נסח טאבו, דגלים אדומים, חריגות בנייה, בית משותף וצ'ק-ליסט שאלות למוכר ולעורך הדין",
-      "source": "./",
+      "source": "./skills/bna-property-check",
       "strict": false,
       "skills": [
-        "./skills/bna-property-check"
+        "./"
       ]
     },
     {
       "name": "bna-realestate-tax",
       "description": "מיסוי נדל\"ן ישראלי: מס רכישה, מס שבח ושלושת מסלולי המס על שכירות, עם אימות מול רשות המסים וחישובים בקוד",
-      "source": "./",
+      "source": "./skills/bna-realestate-tax",
       "strict": false,
       "skills": [
-        "./skills/bna-realestate-tax"
+        "./"
       ]
     },
     {
       "name": "bna-deal-analyzer",
       "description": "ניתוח עסקאות נדל\"ן להשקעה: עלות אמיתית, תשואה נטו, תזרים מול משכנתא, תרחישי קיצון והשוואת עסקאות - הכל בקוד",
-      "source": "./",
+      "source": "./skills/bna-deal-analyzer",
       "strict": false,
       "skills": [
-        "./skills/bna-deal-analyzer"
+        "./"
       ]
     },
     {
       "name": "bna-market-research",
       "description": "מחקר שוק נדל\"ן מעסקאות אמת במאגר הממשלתי: השוואת מחיר מבוקש למחירים שנסגרו בפועל וטווח מחיר הוגן",
-      "source": "./",
+      "source": "./skills/bna-market-research",
       "strict": false,
       "skills": [
-        "./skills/bna-market-research"
+        "./"
       ]
     },
     {
       "name": "bna-rent",
       "description": "שכירות חכמה: ניתוח חוזה עם רמזור סעיפים, זכויות שוכרים, פרוטוקול כניסה, מכתבים לבעל הבית והחזרת פיקדון",
-      "source": "./",
+      "source": "./skills/bna-rent",
       "strict": false,
       "skills": [
-        "./skills/bna-rent"
+        "./"
       ]
     },
     {
       "name": "bna-listing-pro",
       "description": "שיווק נכסים לאנשי נדל\"ן: תיאורים שמוכרים, מודעות לכל פלטפורמה, הנחיות צילום, מותג אישי ומעקב מתעניינים - באמת בפרסום בלבד",
-      "source": "./",
+      "source": "./skills/bna-listing-pro",
       "strict": false,
       "skills": [
-        "./skills/bna-listing-pro"
+        "./"
       ]
     },
     {
       "name": "bna-payslip",
       "description": "פענוח תלוש שכר ישראלי: רכיבים, ניכויים, נקודות זיכוי, צ'ק-ליסט הפרשות, דגלים אדומים, ברוטו-נטו בקוד והשוואת הצעות עבודה",
-      "source": "./",
+      "source": "./skills/bna-payslip",
       "strict": false,
       "skills": [
-        "./skills/bna-payslip"
+        "./"
       ]
     },
     {
       "name": "bna-pension",
       "description": "הבנת החיסכון הפנסיוני: פענוח הדוח השנתי, מחשבון דמי ניהול לאורך שנים בקוד, קרנות ברירת מחדל, קרן השתלמות ואיתור כספים אבודים",
-      "source": "./",
+      "source": "./skills/bna-pension",
       "strict": false,
       "skills": [
-        "./skills/bna-pension"
+        "./"
       ]
     },
     {
       "name": "bna-vat",
       "description": "מע\"מ ועוסקים: פטור מול מורשה עם השוואה בקוד, שלושת המסמכים, דיווחים, קיזוז תשומות וחשבוניות ישראל",
-      "source": "./",
+      "source": "./skills/bna-vat",
       "strict": false,
       "skills": [
-        "./skills/bna-vat"
+        "./"
       ]
     },
     {
       "name": "bna-bituach-leumi",
       "description": "ביטוח לאומי לעצמאים: הגדרת עצמאי, מקדמות שמגינות על קצבאות, מה מכוסה ומה לא, פנסיה חובה וטיפול בחובות",
-      "source": "./",
+      "source": "./skills/bna-bituach-leumi",
       "strict": false,
       "skills": [
-        "./skills/bna-bituach-leumi"
+        "./"
       ]
     },
     {
       "name": "bna-car",
       "description": "קניית רכב חכמה: בדיקות חובה ליד שנייה, השוואת מזומן/מימון/ליסינג בקוד עם ריבית אפקטיבית אמיתית, ביטוח ודגלים אדומים",
-      "source": "./",
+      "source": "./skills/bna-car",
       "strict": false,
       "skills": [
-        "./skills/bna-car"
+        "./"
       ]
     },
     {
       "name": "bna-miluim",
       "description": "זכויות מילואים: תגמולים, מענקים והטבות בבדיקה חיה מול מקורות רשמיים, הגנות בעבודה, סטודנטים והגשת תביעות",
-      "source": "./",
+      "source": "./skills/bna-miluim",
       "strict": false,
       "skills": [
-        "./skills/bna-miluim"
+        "./"
       ]
     },
     {
       "name": "bna-fund-compare",
       "description": "השוואת קרנות השתלמות, גמל ופנסיה מהדאטה הרשמית של משרד האוצר (גמל-נט/פנסיה-נט): דמי ניהול, תשואות 5 שנים ושארפ, עם סקריפט מובנה",
-      "source": "./",
+      "source": "./skills/bna-fund-compare",
       "strict": false,
       "skills": [
-        "./skills/bna-fund-compare"
+        "./"
       ]
     },
     {
       "name": "bna-stock-report",
       "description": "דוסייה עובדתי על מניה אמריקאית או תל-אביבית מהדוחות הרשמיים (SEC EDGAR) ונתוני שוק חיים, עם סקריפט מובנה. עובדות בלבד, בלי המלצות",
-      "source": "./",
+      "source": "./skills/bna-stock-report",
       "strict": false,
       "skills": [
-        "./skills/bna-stock-report"
+        "./"
       ]
     },
     {
       "name": "bna-market-pulse",
       "description": "מסך שוק גלובלי חי: תל אביב, וול סטריט, אירופה ואסיה, מט\"ח (כולל שער יציג רשמי מבנק ישראל), זהב ונפט - עם השוואת מדדים מותאמת מטבע וסקירה כתובה לשיתוף",
-      "source": "./",
+      "source": "./skills/bna-market-pulse",
       "strict": false,
       "skills": [
-        "./skills/bna-market-pulse"
+        "./"
       ]
     }
   ]
