@@ -1,15 +1,15 @@
 ---
 name: bna-video-ad
-description: Make a realistic video ad (10-20 seconds) for any business, product, service or place in Higgsfield, from a text prompt only, with no source images. The user picks one of three quality levels with exact credit costs (Seedance 2.5 for the most cinematic look, Kling 3.0 Pro for 1080p at a fraction of the price, or Seedance 2.0 Mini as the cheapest, at 720p). It asks a few short questions first, writes a precise multi-shot prompt and runs two versions. It checks them frame by frame, lets the user watch both and choose, then adds music and a Hebrew end card. Use this whenever the user wants an AI-made video ad, commercial or promo, even if they don't name the tools. Trigger phrases include "תיצור לי פרסומת", "פרסומת לעסק שלי", "סרטון פרסומת", "פרסומת וידאו", "סרטון תדמית", "מודעת וידאו", "פרסומת בהיגספילד", "video ad", "commercial" and "promo video". Not for editing footage the user filmed.
+description: Make a realistic video ad (10-20 seconds) for any business, product, service or place in Higgsfield, from a precise prompt plus the user's own photos of the product, space or project, uploaded to Higgsfield as references. The user picks one of three quality levels with exact credit costs (Seedance 2.5 for the most cinematic look, Kling 3.0 Pro for 1080p at a fraction of the price, or Seedance 2.0 Mini as the cheapest, at 720p). It asks a few short questions first, writes a precise multi-shot prompt and runs two versions. It checks them frame by frame, lets the user watch both and choose, then adds music and a Hebrew end card. Use this whenever the user wants an AI-made video ad, commercial or promo, even if they don't name the tools. Trigger phrases include "תיצור לי פרסומת", "פרסומת לעסק שלי", "סרטון פרסומת", "פרסומת וידאו", "סרטון תדמית", "מודעת וידאו", "פרסומת בהיגספילד", "video ad", "commercial" and "promo video". Not for editing footage the user filmed.
 ---
 
-# Video ad from a prompt (Higgsfield: Seedance 2.5, Kling 3.0 Pro or Seedance 2.0 Mini)
+# Video ad from a prompt and the user's photos (Higgsfield: Seedance 2.5, Kling 3.0 Pro or Seedance 2.0 Mini)
 
 ## Why this method
 
-Ads made by animating AI images look like AI. The image model makes everything glossy, oversaturated and "too perfect", and the video inherits that look.
+Ads made by animating AI images look like AI. The image model makes everything glossy, oversaturated and "too perfect", and the video inherits that look. So never generate images first and never animate a still.
 
-What looks filmed instead is one prompt-only video generation, written the way a cinematographer talks:
+What looks filmed instead is one video generation, written the way a cinematographer talks:
 - real lenses
 - natural light
 - muted color
@@ -18,9 +18,11 @@ What looks filmed instead is one prompt-only video generation, written the way a
 
 One generation can hold several shots. The cast and the place stay consistent across them, because the model makes them together.
 
+**The user's own photos go to the model as references.** When the user has photos of the real product, the real space or the project (renderings count), upload them to Higgsfield and pass them in `medias`. That is the only way the video shows *their* product or place and not a look-alike. Never replace the photos with a description of them: the prompt only points to each photo and adds what a photo can't show, such as size, use and movement. The user's logo is the exception. It goes on the end card, not into the model, which turns logos into gibberish.
+
 The whole method:
-1. Ask a few questions.
-2. Write one multi-shot prompt.
+1. Ask a few questions, and collect the user's photos.
+2. Upload the photos to Higgsfield and write one multi-shot prompt that points to them.
 3. The user picks a quality level, with exact credit costs.
 4. Run two versions: cheap drafts on the premium level, two full versions on the cheaper levels.
 5. Check them frame by frame.
@@ -77,20 +79,32 @@ Params per level (all fields go inside the tool's `params` object):
 חסכוני:   model: seedance_2_0_mini, resolution: 720p, generate_audio: true, duration: 10-15, aspect_ratio, count: 2
 ```
 
+**With the user's photos.** The models differ here, and it decides which levels fit:
+
+| Level | Photos | How |
+|---|---|---|
+| פרימיום, Seedance 2.5 | up to 4, as references | `mode: omni_reference` + `medias: [{value: <media_id>, role: image_references}, ...]` |
+| חסכוני, Seedance 2.0 Mini | up to 4, as references | `medias: [{value: <media_id>, role: image_references}, ...]` (this model has no `mode`) |
+| משתלם, Kling 3.0 | one photo only, as the first frame | `medias: [{value: <media_id>, role: start_image}]` |
+
+- **The price doesn't change.** A free check in Nov 2026 gave the same numbers with two reference photos: 60 + 160 on premium, 20 on budget, 40 on Kling, for 10 seconds.
+- **Seedance 2.5 needs `mode: omni_reference`.** With `mode: t2v`, the free cost check accepted the photos without any warning. So no error will catch it: set the mode yourself.
+- **Kling sees one photo at most, and only as the opening frame.** The film starts on that exact photo and invents the rest, so the product in later shots may drift from the real one. Never send it two photos or `image_references`: in a cost check, Higgsfield silently turned two photos into the first and the *last* frame, and the last frame is where the end card goes. With photos of a product, recommend the Seedance levels and say why. Kling fits only when one photo of the place makes a good opening shot.
+
 Music in Higgsfield adds about 2 credits on any level.
 
 The shots in the result rarely match the planned seconds exactly. In a 10 s test, the plan of 3 / 3 / 4 came out as 3.25 / 2.46 / 4.33. That is fine, but always take the card timing from the real cuts.
 
 ## Step 0: check the setup (quietly, before asking anything)
 
-1. **Higgsfield connected?** Look for the Higgsfield tools: `generate_video`, `jobs_wait`, `balance` and `models_explore`.
+1. **Higgsfield connected?** Look for the Higgsfield tools: `generate_video`, `jobs_wait`, `balance`, `models_explore`, and for photos `media_upload` and `media_confirm`.
    - If they are missing, tell the user how to connect, then stop.
    - In the app: claude.ai → Customize → Connectors → Add custom connector. The URL is `https://mcp.higgsfield.ai/mcp`; then sign in to Higgsfield.
    - In a terminal: `claude mcp add --transport http higgsfield https://mcp.higgsfield.ai/mcp`, then sign in through `/mcp`.
 2. **Credits and model:**
    - Call `balance`.
-   - Call `models_explore` with `action: "get"` for `seedance_2_5`, `kling3_0` and `seedance_2_0_mini`. Confirm each is available and lists the params in the levels table. Offer only the levels whose model the user's plan includes.
-   - Higgsfield's tools suggest "Marketing Studio" for ads. This skill deliberately uses the three models above with a plain text prompt, because that is what gives the filmed look. Follow the tool's instructions for folders (`get_preferences`), costs and errors, but not for the choice of model.
+   - Call `models_explore` with `action: "get"` for `seedance_2_5`, `kling3_0` and `seedance_2_0_mini`. Confirm each is available and lists the params and media roles in the levels tables. Offer only the levels whose model the user's plan includes.
+   - Higgsfield's tools suggest "Marketing Studio" for ads. This skill deliberately uses the three models above with a cinematographer's prompt and the user's real photos, because that is what gives the filmed look. Follow the tool's instructions for folders (`get_preferences`), costs and errors, but not for the choice of model.
 3. **FFmpeg** (free editing software; needed only for the editing step): run `ffmpeg -version`.
    - If it is missing, offer to install it: `brew install ffmpeg` on macOS, `winget install Gyan.FFmpeg` on Windows.
    - If the user declines, deliver the clean video at the end. They can add music and text in CapCut.
@@ -108,14 +122,32 @@ The full set:
 1. מה מפרסמים? שם העסק או המוצר, ומה מיוחד בו במשפט אחד.
 2. למי זה מיועד? (למשל: זוגות צעירים, הורים, בעלי עסקים, סטודנטים)
 3. איזו תחושה? חמימה ומשפחתית / יוקרתית ושקטה / אנרגטית וצעירה / מקצועית ואמינה
-4. איפה זה קורה ומי מופיע? אם יש לכם תמונות של המקום או המוצר האמיתי, גררו 2-3 לחלון הזה. אתאר אותם בפרומפט, כדי שהסרטון ייראה קרוב למציאות.
+4. איפה זה קורה ומי מופיע? יש לכם תמונות של המוצר, של המקום או של הפרויקט (גם הדמיות)? גררו עד 4 לחלון הזה. אעלה אותן להיגספילד כרפרנס, כדי שבסרטון יופיע הדבר האמיתי שלכם.
 5. כמה זמן ובאיזה פורמט? 10 / 15 / 20 שניות, אנכי לרילס או רוחבי ליוטיוב. (בתוכנית תקבלו 3 רמות איכות לבחירה, עם המחיר המדויק של כל אחת.)
 6. מה בסוף? שם ומשפט קצר על המסך, ומוזיקה (ניצור בהיגספילד / יש לכם קובץ / בלי). אם יש לוגו, גררו את הקובץ לחלון.
 ```
 
-- **A physical product:** also ask what the packaging looks like (color, material, shape, lid). For many products the packaging is the brand.
+- **A physical product:** ask for a photo of it if none came: the product alone, sharp, in good light, from the front. Also ask its size in the hand (fits in a palm / needs two hands / stands on a table), because a photo doesn't show scale. Only if there is no photo at all, ask what the packaging looks like (color, material, shape, lid).
 - **Defaults for missing answers:** 15 seconds, vertical 9:16, a warm feeling, music generated in Higgsfield. Say in the plan what you chose.
-- **Files the user drags into the window** arrive as file paths. Copy them into `work/`.
+- **Files the user drags into the window** arrive as file paths. Photos go to `work/refs/` and get uploaded (next section). The logo goes to `work/` and stays out of the model; it's used only on the end card.
+
+### Upload the user's photos (free)
+
+Do it right after the answers, before the plan, so the cost checks in the plan include the photos.
+
+1. **Pick up to 4.** Each photo should show the thing clearly: the product alone, or a wide and straight view of the real room, facade or rendering. Leave out photos with heavy filters, screenshots, collages and photos full of other text. If the user sent more than 4, pick the best and say which.
+2. **Convert if needed.** iPhone photos often arrive as HEIC, and some are huge. On macOS: `sips -s format jpeg -Z 2048 "<file>" --out work/refs/1.jpg` (then 2.jpg, 3.jpg...). On other systems, ask the user for JPG or PNG.
+3. **Get upload links:** call `media_upload` with `files: [{filename: "1.jpg"}, {filename: "2.jpg"}, ...]`. Each item returns an `upload_url` and a `media_id`.
+4. **Upload each file** with curl, keeping the long URL in single quotes. Expect `200`:
+   ```bash
+   curl -s -o /dev/null -w '%{http_code}\n' -X PUT -H "Content-Type: image/jpeg" --data-binary @work/refs/1.jpg '<upload_url>'
+   ```
+5. **Confirm:** call `media_confirm` with `type: "image"` and `media_ids: [...]`.
+6. **Record the order** in `PROMPT.md`: image 1 = `<media_id>` (what it shows), image 2 = ... The order in `medias` is the numbering the prompt uses.
+
+If a PUT fails, call `media_upload_widget` where the app offers it, so the user picks the files again in a window. Otherwise tell the user what failed.
+
+**Photos with people:** use them only when the user says the people agreed to appear, for example the owner. Otherwise choose a photo without them.
 
 ## Step 2: plan, then approval
 
@@ -148,6 +180,7 @@ A shot with hands near the face (applying a cream, for example) needs at least 3
 **Get the real costs before you show the plan.** All of these checks are free:
 - **Premium:** call `get_cost: true` on the draft params (`draft: true`, `count: 2`) and on the 1080p final (same params with `resolution: "1080p"`, without `draft` and `count`).
 - **The cheaper levels:** call `get_cost: true` on their params with `count: 2`, for lengths up to 15 seconds.
+- **With photos:** send the exact `mode` and `medias` of each level, as in "With the user's photos" above. If the result carries an `adjustments` note about media roles, the tool changed what the photos do: fix the params, don't pass over it.
 - **Music:** add it if the user wants it generated.
 
 **Send the plan in Hebrew,** in this order: the plan, the prompt, the cost, and the question last.
@@ -163,7 +196,9 @@ A shot with hands near the face (applying a cream, for example) needs at least 3
 
 *בסוף:* <שם> · <משפט>, <מוזיקה>
 
-*חשוב לדעת:* <only if relevant: the place/product is generated from a description, so it will look close to the real one, not identical>
+*חשוב לדעת:* <with photos: "הסרטון נבנה על התמונות שלכם, אז <המוצר/המקום> ייראה כמו שלכם. מה שלא רואים בתמונות, המודל משלים בעצמו, ואותיות קטנות על התווית עלולות לצאת מטושטשות. נבדוק את זה בגרסאות." / without photos: "<המקום/המוצר> נוצר מתיאור, אז הוא ייראה קרוב לאמיתי, לא זהה.">
+
+*התמונות שלכם:* <only with photos: "תמונה 1: <מה רואים>, תמונה 2: ...">
 
 הפרומפט המלא (באנגלית, ככה המודל עובד הכי טוב) שמור בקובץ <path>/PROMPT.md:
 <the English prompt in a code block>
@@ -178,6 +213,8 @@ A shot with hands near the face (applying a cream, for example) needs at least 3
 ```
 
 For 20 seconds, show only the premium line and add: "רוצים לחסוך? ב-15 שניות אפשר גם ברמות הזולות". If a model is missing from the user's plan, leave its line out.
+
+With photos, change the Kling line to: "*משתלם, Kling 3.0 Pro:* מקבל רק תמונה אחת, כפריים הפתיחה. בשאר השוטים <המוצר/המקום> עלול להיראות אחרת. <K>." With product photos, recommend premium or budget, the two that see all the photos.
 
 ## Step 3: write the prompt
 
@@ -195,10 +232,28 @@ A <N>-second live-action commercial for <what>, <where>. Photorealistic document
 - People who appear in one shot only (friends, passers-by) can be described inside that shot.
 - Children wear everyday modest clothes, like a T-shirt or a cotton dress. Never write swimwear, bath or undressing scenes for children. In testing, a child lifted onto a kitchen counter showed underwear in one draft, and that ruins an ad.
 
-**3. The place or product, once.** Describe concrete materials, colors, shapes and scale, and keep it grounded and plausible; fantasy architecture looks fake.
-- **If the user sent photos:** look at them and turn what you see into words, such as the plaster color, the shutters, the counter wood or the jar's glass and lid. Don't pass the photos to the model. Image inputs pull the video toward a photo or render look, and the text route keeps it filmed.
-- **Products:** describe them generically and unlabeled ("a small frosted glass jar with a matte white lid, no label"). Never name real brands. The real logo, and a real product photo if the user has one, go on the end card.
-- **Remove text from the world:** "No sign on the facade, no menu board, no lettering on windows, cups or packaging." Signs, menus, printed cups and branded machines come out as gibberish letters.
+**3. The place or product, once.**
+
+*With the user's photos* (they go in `medias`, Step 4), point to each photo by its number and let the photo carry the look:
+
+```
+The product is exactly the jar in image 1: the same shape, colors, materials and label. It fits in one palm.
+The bakery is exactly the space in images 2 and 3: the same counter, shelves, tiles and windows.
+```
+
+- **Don't describe what the photo already shows,** like colors, materials or design. Words that differ even a little from the photo pull the model away from it. Add only what a photo can't show: the size against a hand or the room, how it's used, and what moves.
+- **The prompt still carries the film.** Higgsfield's own guide warns that with a thin prompt, Seedance copies the reference almost frame for frame and the result looks stiff. Keep the full shot list, the actions and the camera moves.
+- **A product with a photo:**
+  - *Seen sides only:* show it only from the sides seen in the photos. Write "it never turns around to show sides not seen in image 1", or the model invents a back.
+  - *One unit:* write "exactly one jar in frame at all times". Without it, the model tends to multiply the product.
+  - *Its own label stays:* the product's label is the one text that may appear, as it is in the photo.
+- **Renderings of a project** are fine as references. The realism header ("not CGI, not a 3D render") is what makes the film look shot rather than rendered, so keep it word for word.
+- **Shots the photos don't cover** (a street, a balcony, the people) are described in words as usual, in the same light and style.
+
+*Without photos,* describe concrete materials, colors, shapes and scale, and keep it grounded and plausible; fantasy architecture looks fake.
+- **Products without a photo:** describe them generically and unlabeled ("a small frosted glass jar with a matte white lid, no label"). Never name real brands. The real logo goes on the end card.
+
+*Either way,* **remove text from the world:** "No sign on the facade, no menu board, no lettering on windows, cups or packaging." Signs, menus, printed cups and branded machines come out as gibberish letters. The only exception is the label of a product the user sent a photo of.
 
 **4. Shots with timestamps.** One line per shot:
 
@@ -226,7 +281,7 @@ Hard cuts between shots, calm natural pacing. Sound: natural ambience only: <sou
 ```
 
 - **No dialogue:** AI lip-sync and Hebrew speech are unreliable, and music sits better when added in the edit.
-- **No text:** the model cannot write Hebrew, so all text goes in the edit.
+- **No text:** the model cannot write Hebrew, so all text goes in the edit. With a product photo, end the line with "...anywhere on screen, apart from the product's own label as in image 1."
 
 **Words that push the AI look.** Describe how the shot was filmed, not how impressive it is. Avoid:
 - luxury, luxurious, epic, stunning, breathtaking
@@ -259,7 +314,7 @@ Starting points to adapt. Don't copy them blindly.
   - morning window light in a bathroom
   - the texture on a fingertip, close-up
   - a calm moment at the mirror
-  - the jar on a stone sill in soft light (unlabeled)
+  - the jar on a stone sill in soft light (with its label only if it comes from the user's photo)
 - **Clinic, coach or professional service:**
   - arriving, a little tense
   - a calm conversation, no lip-sync
@@ -321,13 +376,15 @@ Call `generate_video` with the params of the chosen level from the levels table.
 
 ```
 model: seedance_2_5
-mode: t2v
+mode: t2v                 (omni_reference when there are photos)
 prompt: <the prompt>
 duration: <10 | 15 | 20>
 aspect_ratio: 9:16        (16:9 for YouTube, 1:1 for a square post)
 generate_audio: true
 draft: true
 count: 2
+medias: [{value: <image 1 media_id>, role: image_references}, {value: <image 2 media_id>, role: image_references}]
+                          (only with photos, in the prompt's order)
 ```
 
 **Value (Kling 3.0 Pro):**
@@ -340,7 +397,11 @@ prompt: <the prompt>
 duration: <10 | 15>
 aspect_ratio: 9:16
 count: 2
+medias: [{value: <one media_id>, role: start_image}]
+                          (only with photos: one photo, the opening frame, never two)
 ```
+
+With a start frame, shot 1 of the prompt must describe what is in that photo, so the film starts where the photo is.
 
 **Budget (Seedance 2.0 Mini):**
 
@@ -352,6 +413,8 @@ prompt: <the prompt>
 duration: <10 | 15>
 aspect_ratio: 9:16
 count: 2
+medias: [{value: <image 1 media_id>, role: image_references}, ...]
+                          (only with photos, in the prompt's order)
 ```
 
 On the cheaper levels, each version is already at its final quality. There is no draft and nothing more to pay; the user only picks which one to edit.
@@ -387,6 +450,7 @@ Open each sheet image and check:
 - **Children:** they are dressed properly in every frame.
 - **Text:** there is no gibberish text, sign or fake logo anywhere.
 - **Objects:** nothing morphs, melts or appears from nowhere.
+- **The real product or place** (with photos): open the user's photos next to the sheet and compare shape, colors, proportions and label. One unit of the product only, and no invented back side. Zoom into the clearest product frame (`ffmpeg -ss <t> -i drafts/<n>.mp4 -frames:v 1 work/<n>_product.jpg`) to check the label.
 - **The brief:** the special thing is visible, and the place or product matches what was asked.
 - **The last shot:** it is calm, with a mid-tone empty area for the card.
 
@@ -411,7 +475,7 @@ So the user must actually watch both versions and choose; your frame check and r
 1. האנשים: נראים טבעיים, ואותם אנשים לאורך כל הסרטון?
 2. ידיים ותנועה: שום דבר מוזר, מעוות או "קופץ"?
 3. כיתוב: אין שלטים או אותיות משובשות?
-4. המקום או המוצר: מרגיש כמו העסק שלכם?
+4. המקום או המוצר: נראה כמו שלכם? (אם שלחתם תמונות, השוו אליהן, כולל התווית)
 5. ההרגשה: זה מה שרציתם להגיד?
 
 אני ממליץ על טיוטה <1/2>, כי <סיבה קצרה>. <מה שמצאתי בבדיקה, כולל בעיות>.
@@ -439,7 +503,7 @@ On the cheaper levels, adapt the message:
 
 On the cheaper levels, skip this step: copy the chosen version to `final/raw_1080.mp4` and go to Step 6. The name is kept so the commands stay the same, even when the file is 720p.
 
-Only after the user picked a draft at the stop above. Call `generate_video` with the same params as the draft, minus `draft` and `count`, plus these two:
+Only after the user picked a draft at the stop above. Call `generate_video` with the same params as the draft (including `mode` and `medias` when there are photos), minus `draft` and `count`, plus these two:
 
 ```
 draft_job_id: <the chosen draft's job id>
@@ -615,6 +679,7 @@ LUFS is a loudness unit. -14 is the usual level for Instagram and YouTube. The m
 1. **The file:** copy `final/ad.mp4` to `final/<brand> - פרסומת.mp4`. Give the full path, open the folder for the user, and send the file if you can.
 2. **PROMPT.md:** update it with what's needed for the next ad or a variation:
    - the level, the prompt and the settings
+   - the photos' media IDs and what each shows (they can be reused for the next ad without uploading again)
    - both draft job IDs (a draft can still be finished within 7 days)
    - the credits spent
    - the card text
@@ -630,11 +695,11 @@ LUFS is a loudness unit. -14 is the usual level for Instagram and YouTube. The m
   - Don't invent prices, discounts, awards or claims.
   - No medical, financial or cosmetic promises, such as "heals", "anti-aging", "removes wrinkles" or "clinically proven". Show the feeling instead.
 - **People:**
-  - Everyone on screen is invented.
+  - The cast is invented, unless the user sent a photo of someone who agreed to appear.
   - No celebrities and no look-alikes of real people.
-  - No real brands or logos, except the user's own, added in the edit from their file.
+  - No real brands or logos, except the user's own: their product's label from their photo, and their logo on the end card.
 - **Children:** everyday modest clothing only. Never write swimwear, bath or undressing scenes for them.
-- **Real places and products:** when the ad shows one that is generated, it looks close to the real thing, not identical. Say so in the plan. Suggest a small "הדמיה" note on the card; for real estate it is standard.
+- **Real places and products:** with the user's photos, the film is close to the real thing, but the model still fills in what the photos don't show. Without photos, it looks close, not identical. Say which in the plan. Suggest a small "הדמיה" note on the card; for real estate it is standard.
 - **Credits:** never spend without a clear yes, never retry without asking, and never finish a draft the user hasn't watched and chosen.
 
 ## When something goes wrong
@@ -643,6 +708,13 @@ LUFS is a loudness unit. -14 is the usual level for Instagram and YouTube. The m
 - **The model ignores the shot timing:** use fewer shots and simpler actions.
 - **Gibberish text** on signs, cups or screens: take those objects out of the shots, and keep the "no text" lines. Kling is the most likely to add a shop sign. Say "plain facade, no shop sign" inside the shot line, or pick the other version; a sign can't be removed later.
 - **It still looks "AI":** remove hype words, add camera language (handheld, 35mm, natural light), and choose quieter everyday moments.
+- **The product or place doesn't look like the photos:**
+  - Check that `medias` holds the photos, and on Seedance 2.5 that `mode` is `omni_reference`.
+  - Check that the prompt points to them ("exactly the jar in image 1") in every shot where they appear.
+  - Remove any words that describe the product differently from the photo.
+  - A sharper photo, with the product alone, helps more than more words.
+- **It looks like the photo came alive, stiff and frozen:** the prompt is too thin next to the photo. Add movement, actions and camera moves to the shots.
+- **The product doubles or turns around:** add "exactly one <product> in frame at all times" and "it never turns to show sides not seen in image 1" to the shots where it appears.
 - **A job failed:** check its status with `jobs_wait` before doing anything. Don't resubmit blindly.
 
 ---
