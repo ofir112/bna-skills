@@ -1,6 +1,6 @@
 ---
 name: bna-video-ad
-description: Make a realistic video ad (10-20 seconds) for any business, product, service or place in Higgsfield, from a precise prompt plus the user's own photos of the product, space or project, uploaded to Higgsfield as references. The user picks one of three quality levels with exact credit costs (Seedance 2.5 for the most cinematic look, Kling 3.0 Pro for 1080p at a fraction of the price, or Seedance 2.0 Mini as the cheapest, at 720p). It asks a few short questions first, writes a precise multi-shot prompt and runs two versions. It checks them frame by frame, lets the user watch both and choose, then adds music and a Hebrew end card. Use this whenever the user wants an AI-made video ad, commercial or promo, even if they don't name the tools. Trigger phrases include "תיצור לי פרסומת", "פרסומת לעסק שלי", "סרטון פרסומת", "פרסומת וידאו", "סרטון תדמית", "מודעת וידאו", "פרסומת בהיגספילד", "video ad", "commercial" and "promo video". Not for editing footage the user filmed.
+description: Make a realistic video ad (any length from 5 to 30 seconds) for any business, product, service or place in Higgsfield, from a precise prompt plus the user's own photos of the product, space or project, uploaded to Higgsfield as references. The user picks one of three quality levels with exact credit costs (Seedance 2.5 for the most cinematic look, Kling 3.0 Pro for 1080p at a fraction of the price, or Seedance 2.0 Mini as the cheapest, at 720p). It asks a few short questions first, writes a precise multi-shot prompt and runs two versions. It checks them frame by frame, lets the user watch both and choose, then adds music and a Hebrew end card. Use this whenever the user wants an AI-made video ad, commercial or promo, even if they don't name the tools. Trigger phrases include "תיצור לי פרסומת", "פרסומת לעסק שלי", "סרטון פרסומת", "פרסומת וידאו", "סרטון תדמית", "מודעת וידאו", "פרסומת בהיגספילד", "video ad", "commercial" and "promo video". Not for editing footage the user filmed.
 ---
 
 # Video ad from a prompt and the user's photos (Higgsfield: Seedance 2.5, Kling 3.0 Pro or Seedance 2.0 Mini)
@@ -51,13 +51,23 @@ Costs come from the tool itself: send the same params with `get_cost: true`. It 
 
 The user chooses. Show the exact cost of each level for their length (from `get_cost`), recommend one in a short line, and let them decide. A paid campaign or a hero video points to premium. Testing an idea or an organic post points to the cheaper levels.
 
-| Level | Model | How it runs | 10 s | 15 s | 20 s |
-|---|---|---|---|---|---|
-| פרימיום | Seedance 2.5, 1080p | 2 drafts at 480p, then only the chosen one in 1080p | 220 | 330 | 440 |
-| משתלם | Kling 3.0 Pro, 1080p | 2 full versions, the user picks one | 40 | 60 | not available |
-| חסכוני | Seedance 2.0 Mini, 720p | 2 full versions, the user picks one | 20 | 30 | not available |
+| Level | Model | How it runs | Lengths | Credits per second |
+|---|---|---|---|---|
+| פרימיום | Seedance 2.5, 1080p | 2 drafts at 480p, then only the chosen one in 1080p | 5-30 s | 22 (6 for the 2 drafts, 16 for the final) |
+| משתלם | Kling 3.0 Pro, 1080p | 2 full versions, the user picks one | 5-15 s | 4 (for both versions) |
+| חסכוני | Seedance 2.0 Mini, 720p | 2 full versions, the user picks one | 5-15 s | 2 (for both versions) |
 
-These are reference prices from Nov 2026, and they change. The cheaper models go up to 15 seconds, so a 20-second ad is premium only; to save, suggest 15 seconds.
+The price is exactly per second:
+
+| Length | פרימיום | משתלם | חסכוני |
+|---|---|---|---|
+| 5 s | 110 | 20 | 10 |
+| 10 s | 220 | 40 | 20 |
+| 15 s | 330 | 60 | 30 |
+| 20 s | 440 | not available | not available |
+| 30 s | 660 | not available | not available |
+
+These are reference prices from Nov 2026 (checked with `get_cost` at 5, 10, 15, 20 and 30 seconds), and they change. The plan always shows the exact price from `get_cost` for the user's length. The cheaper models stop at 15 seconds, so anything longer is premium only; to save, suggest 15 seconds.
 
 **What a real test showed.** The same 10-second bakery prompt was run on all three:
 
@@ -72,11 +82,11 @@ Tell users this honestly when they choose.
 Params per level (all fields go inside the tool's `params` object):
 
 ```
-פרימיום:  model: seedance_2_5, mode: t2v, duration: 10-20, aspect_ratio, generate_audio: true, draft: true, count: 2
+פרימיום:  model: seedance_2_5, mode: t2v, duration: 5-30, aspect_ratio, generate_audio: true, draft: true, count: 2
           then the chosen one: same params without draft and count, plus draft_job_id and resolution: 1080p
-משתלם:    model: kling3_0, mode: pro, sound: on, duration: 10-15, aspect_ratio (9:16 / 16:9 / 1:1), count: 2
+משתלם:    model: kling3_0, mode: pro, sound: on, duration: 5-15, aspect_ratio (9:16 / 16:9 / 1:1), count: 2
           (for Kling, "mode" means quality: std / pro / 4k)
-חסכוני:   model: seedance_2_0_mini, resolution: 720p, generate_audio: true, duration: 10-15, aspect_ratio, count: 2
+חסכוני:   model: seedance_2_0_mini, resolution: 720p, generate_audio: true, duration: 5-15, aspect_ratio, count: 2
 ```
 
 **With the user's photos.** The models differ here, and it decides which levels fit:
@@ -124,12 +134,17 @@ The full set:
 2. למי זה מיועד? (למשל: זוגות צעירים, הורים, בעלי עסקים, סטודנטים)
 3. איזו תחושה? חמימה ומשפחתית / יוקרתית ושקטה / אנרגטית וצעירה / מקצועית ואמינה
 4. איפה זה קורה ומי מופיע? יש לכם תמונות של המוצר, של המקום או של הפרויקט (גם הדמיות)? גררו עד 4 לחלון הזה. אעלה אותן להיגספילד כרפרנס, כדי שבסרטון יופיע הדבר האמיתי שלכם.
-5. כמה זמן ובאיזה פורמט? 10 / 15 / 20 שניות, אנכי לרילס או רוחבי ליוטיוב. (בתוכנית תקבלו 3 רמות איכות לבחירה, עם המחיר המדויק של כל אחת.)
+5. כמה זמן ובאיזה פורמט? כל אורך מ-5 עד 30 שניות. לרילס בדרך כלל 10-15, לקמפיין או ליוטיוב עד 30. אנכי לרילס או רוחבי ליוטיוב. המחיר עולה עם האורך: על כל 5 שניות, בערך 110 קרדיטים בפרימיום, 20 במשתלם ו-10 בחסכוני (הזולות עד 15 שניות). את המחיר המדויק תקבלו בתוכנית, ושום דבר לא יוצא לדרך בלי האישור שלכם.
 6. מה בסוף? שם ומשפט קצר על המסך, ומוזיקה (ניצור בהיגספילד / יש לכם קובץ / בלי). אם יש לוגו, גררו את הקובץ לחלון.
 ```
 
 - **A physical product:** ask for a photo of it if none came: the product alone, sharp, in good light, from the front. Also ask its size in the hand (fits in a palm / needs two hands / stands on a table), because a photo doesn't show scale. Only if there is no photo at all, ask what the packaging looks like (color, material, shape, lid).
 - **Defaults for missing answers:** 15 seconds, vertical 9:16, a warm feeling, music generated in Higgsfield. Say in the plan what you chose.
+- **Shorter than 5 seconds** leaves no time for the end card. 5-6 seconds is the short "bumper" length (YouTube's 6-second ads).
+- **Longer than 30 seconds:** one generation holds 30 seconds at most. Ask for more and the tool silently cuts it to 30; only `get_cost` shows it, in an `adjustments` note. Offer 30 seconds, or two separate ads. Only if the user insists:
+  - Premium can extend a finished film forward: `mode: video_extension`, `extension_mode: forward`, `medias: [{value: <final job id>, role: video_references}]`, and `duration` set to the added seconds. Drafts work there too.
+  - The added seconds cost the same per second. A 15 s extension was 90 for 2 drafts plus 240 for the final.
+  - This path is not tested yet, so say so. Put the end card in the extension's last shot, not at the end of the first part, and check the join frame by frame.
 - **Files the user drags into the window** arrive as file paths. Photos go to `work/refs/` and get uploaded (next section). The logo goes to `work/` and stays out of the model; it's used only on the end card.
 
 ### Upload the user's photos (free)
@@ -170,9 +185,15 @@ The viewer should feel the benefit, not read about it.
 
 | Length | Shots (seconds each) |
 |---|---|
+| 5-6 s | 2 shots: 2.5 / 3.5 (the hook, then the card shot) |
+| 8 s | 3 shots: 2.5 / 2.5 / 3 |
 | 10 s | 3 shots: 3 / 3 / 4 |
 | 15 s | 5 shots: 2.5 / 3 / 3 / 3 / 3.5 |
 | 20 s | 7 shots: 2.5 / 2.5 / 3 / 3 / 2.5 / 3 / 3.5 |
+| 25 s | 8 shots: 2.5 / 3 / 3 / 3 / 3 / 3 / 3.5 / 4 |
+| 30 s | 9 shots: 3 / 3 / 3 / 3.5 / 3 / 3.5 / 3 / 3.5 / 4.5 |
+
+For other lengths: about one shot per 3 seconds, and a last shot of 3.5-4.5 seconds. Tested so far: 10 s with 3 shots and 20 s with 7. Above 20 seconds, keep every action extra simple, and tell the user in the plan that this length hasn't been tested yet.
 
 A shot with hands near the face (applying a cream, for example) needs at least 3 seconds; otherwise use a texture close-up instead.
 
@@ -181,6 +202,8 @@ A shot with hands near the face (applying a cream, for example) needs at least 3
 **Get the real costs before you show the plan.** All of these checks are free:
 - **Premium:** call `get_cost: true` on the draft params (`draft: true`, `count: 2`) and on the 1080p final (same params with `resolution: "1080p"`, without `draft` and `count`).
 - **The cheaper levels:** call `get_cost: true` on their params with `count: 2`, for lengths up to 15 seconds.
+- **The length came back as asked?** If a result carries an `adjustments` note on `duration` (for example 45 clamped to 30), that length isn't possible on that level. Tell the user and offer the nearest one that is.
+- **Two other lengths:** also check the recommended level at one shorter and one longer length (for example 10 and 20 when the user asked for 15), so the user can compare before choosing.
 - **With photos:** send the exact `mode` and `medias` of each level, as in "With the user's photos" above. If the result carries an `adjustments` note about media roles, the tool changed what the photos do: fix the params, don't pass over it.
 - **Music:** add it if the user wants it generated.
 
@@ -210,10 +233,14 @@ A shot with hands near the face (applying a cream, for example) needs at least 3
 3. *חסכוני, Seedance 2.0 Mini:* 2 גרסאות מלאות לבחירה: <M>. איכות 720p, פחות חד.
 <מוזיקה: כ-2 קרדיטים.> יש לכם <balance> קרדיטים.
 
-אני ממליץ על <רמה>, כי <סיבה קצרה>. איזו רמה בוחרים?
+*אורך אחר?* ב<רמה המומלצת>: <shorter> שניות = <price>, <longer> שניות = <price>.
+
+אני ממליץ על <רמה>, כי <סיבה קצרה>. איזו רמה בוחרים, ובאיזה אורך? הבחירה שלכם היא האישור לסכום הזה, ועד אז לא יוצא אף קרדיט.
 ```
 
-For 20 seconds, show only the premium line and add: "רוצים לחסוך? ב-15 שניות אפשר גם ברמות הזולות". If a model is missing from the user's plan, leave its line out.
+Over 15 seconds, show only the premium line and add: "רוצים לחסוך? ב-15 שניות אפשר גם ברמות הזולות (<K15> / <M15>)". If a model is missing from the user's plan, leave its line out.
+
+If the user picks another length, write the shots again for that length (the timing table above), show the changed shots and the exact price, and wait for a yes again.
 
 With photos, change the Kling line to: "*משתלם, Kling 3.0 Pro:* מקבל רק תמונה אחת, כפריים הפתיחה. בשאר השוטים <המוצר/המקום> עלול להיראות אחרת. <K>." With product photos, recommend premium or budget, the two that see all the photos.
 
@@ -379,7 +406,7 @@ Call `generate_video` with the params of the chosen level from the levels table.
 model: seedance_2_5
 mode: t2v                 (omni_reference when there are photos)
 prompt: <the prompt>
-duration: <10 | 15 | 20>
+duration: <5-30, whole seconds>
 aspect_ratio: 9:16        (16:9 for YouTube, 1:1 for a square post)
 generate_audio: true
 draft: true
@@ -395,7 +422,7 @@ model: kling3_0
 mode: pro
 sound: on
 prompt: <the prompt>
-duration: <10 | 15>
+duration: <5-15, whole seconds>
 aspect_ratio: 9:16
 count: 2
 medias: [{value: <one media_id>, role: start_image}]
@@ -411,7 +438,7 @@ model: seedance_2_0_mini
 resolution: 720p
 generate_audio: true
 prompt: <the prompt>
-duration: <10 | 15>
+duration: <5-15, whole seconds>
 aspect_ratio: 9:16
 count: 2
 medias: [{value: <image 1 media_id>, role: image_references}, ...]
@@ -433,7 +460,7 @@ Download each result URL with `curl` to `drafts/draft1.mp4` and `drafts/draft2.m
 
 ### Check both versions frame by frame
 
-Make a contact sheet at 2 frames a second, 10 per row. Use 2 rows for 10 s, 3 for 15 s and 4 for 20 s. Also print where the cuts fall:
+Make a contact sheet at 2 frames a second, 10 per row, so each row is 5 seconds. Use one row per 5 seconds, rounded up (2 rows for 10 s, 6 for 30 s). Also print where the cuts fall:
 
 ```bash
 cd ads/<slug>
