@@ -88,6 +88,7 @@ Params per level (all fields go inside the tool's `params` object):
 | משתלם, Kling 3.0 | one photo only, as the first frame | `medias: [{value: <media_id>, role: start_image}]` |
 
 - **The price doesn't change.** A free check in Nov 2026 gave the same numbers with two reference photos: 60 + 160 on premium, 20 on budget, 40 on Kling, for 10 seconds.
+- **What a real test showed.** Nov 2026, Seedance 2.0 Mini, one photo of an unlabeled square olive oil bottle with a cork, 10 seconds, 3 shots. In both versions the bottle kept its shape, glass, cork and oil color in every shot, also small in the wide shot. There was one bottle only and no invented label. The one drift was the oil level, a little higher than in the photo. Not tested yet: a printed label, and Seedance 2.5 with references.
 - **Seedance 2.5 needs `mode: omni_reference`.** With `mode: t2v`, the free cost check accepted the photos without any warning. So no error will catch it: set the mode yourself.
 - **Kling sees one photo at most, and only as the opening frame.** The film starts on that exact photo and invents the rest, so the product in later shots may drift from the real one. Never send it two photos or `image_references`: in a cost check, Higgsfield silently turned two photos into the first and the *last* frame, and the last frame is where the end card goes. With photos of a product, recommend the Seedance levels and say why. Kling fits only when one photo of the place makes a good opening shot.
 
